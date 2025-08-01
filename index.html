@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYAM | WEBSITE</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --neon-pink: #ff2a6d;
+            --neon-blue: #05d9e8;
+            --neon-purple: #d300c5;
+            --dark-bg: #0d0221;
+            --darker-bg: #02010a;
+            --text-glow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 109, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(5, 217, 232, 0.1) 0%, transparent 20%);
+        }
+
+        /* Header Styles */
+        header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--text-glow);
+            justify-self: center;
+            animation: flicker 3s infinite alternate;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: 1.2rem;
+            position: relative;
+            padding: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--neon-pink);
+            text-shadow: var(--text-glow);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-pink);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue);
+            animation: glitch 2s infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 3rem;
+        }
+
+        .cyber-button {
+            background: none;
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .cyber-button:hover {
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-blue);
+            transition: all 0.3s;
+            z-index: -1;
+        }
+
+        .cyber-button:hover::before {
+            left: 0;
+        }
+
+        /* Grid Layout */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tech-card {
+            border: 1px solid var(--neon-purple);
+            border-radius: 5px;
+            padding: 2rem;
+            background-color: rgba(13, 2, 33, 0.7);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(211, 0, 197, 0.2), transparent);
+            transition: all 0.5s;
+        }
+
+        .tech-card:hover::before {
+            left: 100%;
+        }
+
+        .tech-card h3 {
+            color: var(--neon-pink);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .tech-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 1px solid var(--neon-blue);
+            filter: grayscale(30%) contrast(120%);
+            transition: all 0.3s;
+        }
+
+        .tech-card:hover img {
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        /* Animations */
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 
+                    0 0 10px var(--neon-blue),
+                    0 0 20px var(--neon-blue),
+                    0 0 30px var(--neon-blue);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        @keyframes glitch {
+            0%, 100% {
+                transform: translate(0);
+                text-shadow: 0 0 15px var(--neon-blue);
+            }
+            25% {
+                transform: translate(-5px, 5px);
+                text-shadow: 0 0 15px var(--neon-pink);
+            }
+            50% {
+                transform: translate(5px, -5px);
+                text-shadow: 0 0 15px var(--neon-purple);
+            }
+            75% {
+                transform: translate(-5px, 5px);
+                text-shadow: 0 0 15px var(--neon-blue);
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--neon-purple);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        }
+
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .tech-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-rain" id="matrixRain"></div>
+    
+    <header>
+        <div class="header-grid">
+            <div class="logo">SYAM WEB</div>
+            <nav>
+                <ul>
+                    <li><a href="https://v8.kuramanime.run/quick/ongoing?order_by=updated">ANIME 1</a></li>
+                    <li><a href="https://nimegami.id/">ANIME 2</a></li>
+                    <li><a href="https://otakudesu.cloud/">ANIME 3</a></li>
+                    <li><a href="https://www.tiktok.com/@lowprivat_777">TT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>WELCOME TO SYAM WEBSITE</h1>
+            <p>WEB PERTAMA,WAJAR KALO KAKU WKWK.</p>
+            <button class="cyber-button">LOG IN</button>
+        </section>
+
+        <section class="tech-grid">
+            <div class="tech-card">
+                <img src="https://nimegami.id/wp-content/uploads/2025/07/Mikadono-Sanshimai-wa-Angai-Choroi.-Sub-Indo2.webp" alt="Futuristic cybernetic arm with glowing blue circuitry and holographic interface floating above it">
+                <h3>Mikadono Sanshimai wa Angai,Choroi.</h3>
+                <p>Kategori :Comedy,Romance,Shounen.</p>
+            </div>
+            <div class="tech-card">
+                <img src="https://nimegami.id/wp-content/uploads/2025/07/Mizu-Zokusei-no-Mahoutsukai-Sub-Indo2.jpg" alt="Holographic city map with glowing red and blue data streams floating above a high-tech console">
+                <h3>Mizu Zokusei no Mahoutsukai</h3>
+                <p>Kategori :Action,Fantasy,Isekai,Reincernation.</p>
+            </div>
+            <div class="tech-card">
+                <img src="https://nimegami.id/wp-content/uploads/2017/04/High-School-DxD-BorN-900x506.jpg" alt="Close-up of a cybernetic eye with intricate mechanical parts and golden glowing iris">
+                <h3>High School DxD</h3>
+                <p>Kategori:Action,Comedy,Demons,Ecchi,Harem,Romance,School.</p>
+            </div>
+            <div class="tech-card">
+                <img src="https://nimegami.id/wp-content/uploads/2020/12/BoBoiBoy-Movie-22.jpg" alt="Futuristic motorcycle with glowing blue wheel rims parked in a neon-lit alley at night">
+                <h3>BoBoiBoy Movie 2</h3>
+                <p>Kategori :Action,Adventure,Comedy,Family,Sci-Fi.</p>
+            </div>
+        
+                
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 SYAM WEBSITE CORPORATION. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        // Matrix rain effect
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        document.getElementById('matrixRain').appendChild(canvas);
+
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+        const alphabet = katakana + latin + nums + symbols;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(13, 2, 33, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#05d9e8';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+
+        setInterval(draw, 30);
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        });
+
+        // Glitch effect on click
+        const buttons = document.querySelectorAll('.cyber-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.add('glitch');
+                setTimeout(() => {
+                    button.classList.remove('glitch');
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
